@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<configuration>
+
+    <!-- Metastore Configuration -->
+    <property>
+        <name>javax.jdo.option.ConnectionURL</name>
+        <value>jdbc:postgresql://metastore-db:5432/metastore</value>
+        <description>JDBC connection URL for the metastore</description>
+    </property>
+    <property>
+        <name>javax.jdo.option.ConnectionDriverName</name>
+        <value>org.postgresql.Driver</value>
+        <description>Driver class name for the metastore database</description>
+    </property>
+    <property>
+        <name>javax.jdo.option.ConnectionUserName</name>
+        <value>hive</value>
+        <description>Username for metastore database</description>
+    </property>
+    <property>
+        <name>javax.jdo.option.ConnectionPassword</name>
+        <value>hivepassword</value>
+        <description>Password for metastore database</description>
+    </property>
+    <property>
+        <name>hive.metastore.warehouse.dir</name>
+        <value>/user/hive/warehouse</value>
+        <description>Location of Hive tables in HDFS</description>
+    </property>
+    <property>
+        <name>hive.metastore.local</name>
+        <value>false</value>
+        <description>Use a remote metastore server</description>
+    </property>
+    <property>
+        <name>hive.metastore.uris</name>
+        <value>thrift://hive-metastore:9083</value>
+        <description>Thrift URI for the remote metastore</description>
+    </property>
+
+    <!-- HiveServer2 Configuration -->
+    <property>
+        <name>hive.server2.enable.doAs</name>
+        <value>false</value>
+        <description>Disable user impersonation</description>
+    </property>
+
+    <!-- Execution Engine Configuration -->
+    <property>
+        <name>hive.execution.engine</name>
+        <value>tez</value>
+        <description>Use Tez execution engine</description>
+    </property>
+
+    <!-- Tez Configuration -->
+    <!-- Specify the location of Tez libraries in HDFS -->
+    <property>
+        <name>tez.lib.uris</name>
+        <value>hdfs:///apps/tez-0.9.2/*</value>
+        <description>Comma-separated list of URIs for Tez libraries</description>
+    </property>
+
+    <!-- Enable Tez container reuse for better performance -->
+    <property>
+        <name>hive.prewarm.enabled</name>
+        <value>true</value>
+        <description>Enable pre-warming of Tez containers</description>
+    </property>
+    <!-- Configure the number of pre-warmed containers -->
+    <property>
+        <name>hive.prewarm.numcontainers</name>
+        <value>5</value>
+        <description>Number of Tez containers to pre-warm</description>
+    </property>
+
+    <!-- Tez Resource Configuration -->
+    <!-- Adjust these settings based on your cluster's resources -->
+    <property>
+        <name>tez.task.resource.memory.mb</name>
+        <value>4096</value>
+        <description>Memory allocated per Tez task</description>
+    </property>
+    <property>
+        <name>tez.task.java.opts</name>
+        <value>-Xmx3072m</value>
+        <description>Java options for Tez tasks (typically 75% of tez.task.resource.memory.mb)</description>
+    </property>
+    <property>
+        <name>tez.am.resource.memory.mb</name>
+        <value>8192</value>
+        <description>Memory for Tez Application Master</description>
+    </property>
+    <property>
+        <name>tez.am.java.opts</name>
+        <value>-Xmx6144m</value>
+        <description>Java options for Tez Application Master (typically 75% of tez.am.resource.memory.mb)</description>
+    </property>
+
+    <!-- Additional Hive Configuration -->
+    <property>
+        <name>hive.hadoop.supports.splittable.combineinputformat</name>
+        <value>true</value>
+        <description>Enable support for splittable combined input format</description>
+    </property>
+    <property>
+        <name>hive.execution.mode</name>
+        <value>local</value>
+        <description>Set execution mode to local</description>
+    </property>
+
+</configuration>
