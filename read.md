@@ -33,6 +33,9 @@ PT DWBI Sejahtera, an electronics company in Indonesia, plans to expand its mark
 5. **Visualization**
    - Interactive dashboards created with Apache Superset.
 
+## Data Warehouse Architecture
+For a detailed reference to the architecture implemented in this project, please refer to the [Datawarehouse Architecture.pdf](./Datawarehouse%20Architecture.pdf) document included in this directory.
+
 ## Final Results
 - **Total Sales:** Rp38.6M (425K orders).
 - **Top Vendor by Sales:** Advan (20.44%).
